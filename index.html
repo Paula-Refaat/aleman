@@ -622,7 +622,6 @@
                         </div>
                     </div>
                 </section>
-                
                 <script>
                     document.getElementById("contactForm").addEventListener("submit", function(event) {
                         event.preventDefault();
@@ -645,8 +644,10 @@
                         })
                         .then(response => response.json())
                         .then(data => {
-                            // Handle API response here, e.g., show success message
-                            console.log(data);
+                            // Reset form fields
+                            document.getElementById("name").value = "";
+                            document.getElementById("email").value = "";
+                            document.getElementById("message").value = "";
                             alert("Message sent successfully!");
                         })
                         .catch(error => {
@@ -656,6 +657,38 @@
                         });
                     });
                 </script>
+                
+                <!-- <script>
+                    document.getElementById("contactForm").addEventListener("submit", function(event) {
+                        event.preventDefault();
+                
+                        // Collect form data
+                        var formData = {
+                            name: document.getElementById("name").value,
+                            email: document.getElementById("email").value,
+                            message: document.getElementById("message").value,
+                            _replyto: "SherifEbraheem4@gmail.com" // You can adjust this value if needed
+                        };
+                
+                        // Send form data to API
+                        fetch("https://contactus-api.onrender.com/api/v1/contactUs", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            alert("Message sent successfully!");
+                        })
+                        .catch(error => {
+                            // Handle errors, e.g., show error message
+                            console.error("Error:", error);
+                            alert("An error occurred while sending the message.");
+                        });
+                    });
+                </script> -->
                 
 
 
